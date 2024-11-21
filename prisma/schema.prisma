@@ -1,11 +1,11 @@
 generator client {
-  provider      = "prisma-client-js"
+  provider = "prisma-client-js"
   binaryTargets = ["native", "rhel-openssl-1.0.x"]
 }
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://neondb_owner:cG7PaDJTgnC6@ep-delicate-term-a1u9jc0x.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
+  url      = env("DATABASE_URL")
 }
 
 model Todo {
