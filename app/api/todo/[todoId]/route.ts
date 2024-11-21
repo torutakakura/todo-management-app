@@ -1,11 +1,15 @@
-export const dynamic = "force-dynamic";
-
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
+interface RouteParams {
+  params: {
+    todoId: string;
+  };
+}
+
 const prisma = new PrismaClient();
 
-export async function DELETE(request: NextRequest, { params }: { params: { todoId: string } }) {
+export async function DELETE(request: NextRequest, { params }: RouteParams) {
   // 非同期で params を解決
   try {
     const { todoId } = await params;
