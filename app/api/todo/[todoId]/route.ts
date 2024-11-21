@@ -1,18 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
-interface RouteParams {
-  params: {
-    todoId: string;
-  };
-}
-
 const prisma = new PrismaClient();
 
-export async function DELETE(request: NextRequest, { params }: RouteParams) {
+export async function DELETE(request: NextRequest, { params }: { params: { todoId: string } }) {
   // 非同期で params を解決
   try {
-    const { todoId } = await params;
+    const { todoId } = params;
 
     if (!todoId) {
       return new NextResponse("todoId is required", { status: 400 });
