@@ -3,8 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-export async function DELETE(request: NextRequest, { params }: { params: { todoId: string } }) {
-  // 非同期で params を解決
+export async function DELETE(req: NextRequest, { params }: { params: { [key: string]: string } }) {
   try {
     const { todoId } = params;
 
